@@ -1,6 +1,6 @@
 namespace pokemonApp;
 
-class Charizard  : Charmeleon 
+class Charizard  : Charmeleon, Interface
 {
     int powerLevel = 1000000;
     String name = "Charizard";
@@ -14,5 +14,7 @@ class Charizard  : Charmeleon
     {
         System.Console.WriteLine("Solar Pooooooooooooooooooooooooooooooooowers!");
     }
+
+
 
 }

@@ -1,62 +1,163 @@
+﻿using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Text;
+using System.Timers;
+using System.Collections;
+using System;
+
 namespace pokemonApp;
 
 
+//First will make classes available for Charmander, Charmeleon and Charizard.
+//Implementations of the OOP class.
+//Implementations of the Interface.
+//Will create workflow where users can race Pokemons and if user wins, the Pokemon 
+//will be captured.
+//Implementation of taken user input.
+//Implementation of if statements. 
+//Implementation of []
+//Implementation of random number generator.
+//Implementation of loops.
+//If user capture all pokemons, then user will unlock the money wallet.
+//Creation of the user wallet.
+//Creation of the abalilities to exchange pokemons for money.
 
-class Program
+
+
+
+public class Program : Functions
 {
     static void Main(string[] args)
     {
         //Object instantiation
-        Pokemon charmander = new Pokemon("charmander");
+        Pokemon charizard = new Pokemon("charmander");
         Pokemon squirtle = new Pokemon("squirtle");
 
+        System.Console.WriteLine("Hello welcome to Pokemon GO!");
+        string userAnswer= "";
         
-        Charmander.charmander();
-        Charmeleon.charmeleon();
-        
-        //You can use dot notation to access fields and methods available to an object of that class.
-        charmander.type = "fire";
-        charmander.dexNumber = 4;
-        Console.WriteLine(charmander.ToString());
-        Console.WriteLine(squirtle.ToString());
-        
-        //This is how you call an instance method. It "belongs to" objects of that class.
-        //You must instantiate an object of that class to call it.
-        //charmander.IsPokemon();
 
-        //This is how you call a Class/static method. It "belongs to" the class. You do not need 
-        //to instantiate an object to call it. 
-        //Pokemon.Sound();
+        while(!userAnswer.Equals("Y") && !userAnswer.Equals("N")){
+                System.Console.WriteLine("To Start Please Enter (Y or N): ");  
+                userAnswer = Console.ReadLine().ToUpper();
+        }
+            
+        if (userAnswer.Equals("N")){
+            System.Console.WriteLine("Thanks for stopping by, see you later");
+        }
 
+        else
+             System.Console.WriteLine("Welcome to  Pokemon GO");
+
+        countDown();
+        Thread.Sleep(200);
+
+        System.Console.WriteLine(@"
+    ""
+        
+                                   ,'\
+    _.----.        ____         ,'  _\   ___    ___     ____
+_,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
+\      __    \    '-.  | /   `.  ___    |    \/    |   '-.   \ |  |
+ \.    \ \   |  __  |  |/    ,','_  `.  |          | __  |    \|  |
+   \    \/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |
+    \     ,-'/  /   \    ,'   | \/ / ,`.|         /  /   \  |     |
+     \    \ |   \_/  |   `-.  \    `'  /|  |    ||   \_/  | |\    |
+      \    \ \      /       `-.`.___,-' |  |\  /| \      /  | |   |
+       \    \ `.__,'|  |`-._    `|      |__| \/ |  `.__,'|  | |   |
+        \_.-'       |__|    `-._ |              '-.|     '-.| |   |
+                                `'                            '-._|
+        
+                    ");
+
+
+
+Random rand = new Random();
+Charmeleon charmeleon = new Charmeleon();
+Pokemon pokemons = new Pokemon();
+bool playGame = false;
+
+
+
+while (!playGame){
+
+                 System.Console.WriteLine("Choose: Hunt, Scan, Follow: ");
+                 string user = System.Console.ReadLine().ToUpper();
+
+                 string [] pokiValues = new string[3];
+                 pokiValues [0] = "Runining";
+                 pokiValues [1] = "Eatting";
+                 pokiValues [2] = "Sleeping";
+                 
+                 int pok= rand.Next(1,4);
+
+              
+
+                 if (user == "Hunt" || pok == 1){
+                    System.Console.WriteLine("The pokemon is eatting! You can hunt it or leave it alone");
+                    System.Console.WriteLine("Hunt / Leave it alone: " );
+                    string huntAnswer  = Console.ReadLine();
+                    if (huntAnswer == "Hunt"){
+
+                        isCaptured();
+                        
+                    }
+
+                 }
+
+                 else if (user == "Scan" || pok == 2){
+                    System.Console.WriteLine("The pokemon is Sleeping.");
+                    System.Console.WriteLine("You could have captured it, but you chose not to Hunt it.");
+                 }
+
+                 else if (user == "Follow" || pok == 3){
+                    System.Console.WriteLine("The pokemon is Runining, you can not capture it");
+                 }
+
+
+
+         
+
+           System.Console.WriteLine("player: " + user);
+           System.Console.WriteLine("Pokemons " + pok);
+
+
+}
 
     }
-}
+
+
+
+
+    // Random number generator for deciding if the user will capture the Pokemon or not. 
+
+    public static void  countDown()
+        {
+            for (int i = 10; i>=0; i--)
+            {
+                System.Console.WriteLine("Time: " + i);
+                Thread.Sleep(1000);
+            }
+                     System.Console.WriteLine("LET'S GO!");
+
+        }
+
+    }
+
+
+
 
 
 class Pokemon 
 {
-    //Fields
-
-    //Fields are private by default. This field was explicitly declared private.
     private string name;
-    
-    //This field is public. It was explicitely declared public. It can be accessed via dot-notation
-    //from any object of this class.
     public string type;
-    
-    //This field is also private. When no access modifier is explicitly given, the compiler treats the
-    //field as private.
     int hitpoints;
 
-    //Auto-property syntax. This creates a backing field, along with the getter and setter. 
     public int dexNumber {get; set;}
-    
     int weight;
     int level;
-
-    //Constructors - Special methods used to instantiate or "create" an instance of a class.
-    //You can have as many constructors as you need provided the signatures are different. 
-    //This is a common example of method overloading. 
     public Pokemon()
     {
 
@@ -69,10 +170,6 @@ class Pokemon
     public Pokemon(string pokename, string type, int hp, int dex, int wt, int lvl)
     {   
         name = pokename;
-
-        //When the name of a constructor argument and the name of a class field are the same,
-        //"this.field" denotes the internal field, versus the argument that gets passed into the 
-        //constructor
         this.type = type;
         hitpoints = hp;
         dexNumber = dex;
@@ -80,26 +177,24 @@ class Pokemon
         level = lvl;
     }
 
-    //Methods
-
-    //This method is an instance method. It can be called by an object of class Pokemon using dot-notation.
     public void IsPokemon()
     {
         Console.WriteLine($"My name is {name}. I'm a {type} I am a pokemon.");
     }
 
-    //This method is static. It can be called with dot-notation using the name of the class itself.  
     public static void Sound()
     {
         Console.WriteLine("*pokemon noises*");
     }
 
-    //Overriding
     public override string ToString()
     {
         return $"My name is {name}, number {dexNumber}. I'm a {type} I am a pokemon.";
     }
 
-
-
+    public static implicit operator Pokemon(int v)
+    {
+        throw new NotImplementedException();
+    }
 }
+
