@@ -18,5 +18,5 @@
         //Print
         Console.WriteLine((sum - max) + " " + (sum - min));
     }
-}
+
 
