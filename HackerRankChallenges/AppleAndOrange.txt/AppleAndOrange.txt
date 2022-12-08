@@ -1,0 +1,55 @@
+  //The main point is to find out the distance of each falling fruit from Sam's house.
+  //We can find that by adding d + tree_Position
+  // d is the unit of distance from its tree of origin 
+  //Then we check to see if the position of ech fruit is within Sam's house using this formala (the distance btween [S, t])
+  //We Increment each fruit
+  //Then we print the number both Apples and oranges on Sam's house
+
+  
+  
+  //We define the countApplesAndOranges method and we make List<int> for both Apples and Oranges.
+  public static void countApplesAndOranges(int s, int t, int a, int b, List<int> apples, List<int> oranges)
+    {
+        //Incialize apples_on_house =0;
+        int apples_on_house = 0;
+
+
+        // Incialize oranges_on_house =0;
+        int oranges_on_house = 0;
+        
+
+        //Using foreach loop to loop through the list of apples to check if the falls on Sam's house
+          foreach (int apple in apples)
+            {
+                // Calculate the position of the apple
+                int apple_position = a + apple;
+
+
+                // Check if the position is within the range of Sam's house
+                if (apple_position >= s && apple_position <= t)
+                {
+                    // Increment the counter if the apple falls on Sam's house
+                    apples_on_house++;
+                }
+            }
+
+            // Loop through each orange and check if it falls on Sam's house
+            foreach (int orange in oranges)
+            {
+                // Calculate the position of the orange
+                int orange_position = b + orange;
+
+
+                // Check if the position is within the range of Sam's house
+                if (orange_position >= s && orange_position <= t)
+                {
+                    // Increment the counter if the orange falls on Sam's house
+                    oranges_on_house++;
+                }
+            }
+
+            // Print the number of apples and oranges that fell on Sam's house
+            Console.WriteLine(apples_on_house);
+            Console.WriteLine(oranges_on_house);
+        }
+    }
