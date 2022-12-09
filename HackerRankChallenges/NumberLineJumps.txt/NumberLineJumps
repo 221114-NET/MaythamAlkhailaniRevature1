@@ -1,0 +1,28 @@
+public static string kangaroo(int x1, int v1, int x2, int v2)
+    {
+        
+        // int x1 = 0;
+        // int v1 = 3;
+        // int x2 = 4;
+        // int v2 = 2;
+                
+        if (x1 == x2) return "YES";
+            //if they're going the same speed,
+            //then they can't possibly meet
+        if (v2 >= v1) return "NO";
+        
+          
+            //Then get the difference in speed.
+          
+         
+            //meet in (x2 - x1) / (v2 - v1) steps.
+        if ((x2 - x1) % (v2 - v1) == 0) {
+            return "YES";
+        } else {
+            return "NO";
+        }        
+                            
+
+
+
+    }
