@@ -1,9 +1,20 @@
+
+//We need to creat dictionary that hold frequencies and then Iterate over it.
+//Every time, we trake the smallest bird type with highest frequency.
+//If we find one we return it.
+
+
+
+
 int migratoryBirds(int[] arr)
 {
-    // Store the frequency of each bird type
+    // Creating Dictionary to hold the types. 
+
     Dictionary<int, int> frequencies = new Dictionary<int, int>();
 
-    // Iterate over the input array and count the frequency of each bird type
+    // Iterate over the array and count the frequency.
+
+
     foreach (int type in arr)
     {
         if (!frequencies.ContainsKey(type))
@@ -17,13 +28,17 @@ int migratoryBirds(int[] arr)
     }
 
     // Find the maximum frequency
+
+
     int maxFrequency = 0;
     foreach (int freq in frequencies.Values)
     {
         maxFrequency = Math.Max(maxFrequency, freq);
     }
 
-    // Find the smallest bird type with the maximum frequency
+    // Find the smallest bird type with the maximum frequency.
+
+    
     int minType = int.MaxValue;
     foreach (int type in frequencies.Keys)
     {
@@ -33,6 +48,6 @@ int migratoryBirds(int[] arr)
         }
     }
 
-    // Return the smallest bird type with the maximum frequency
+    // Return the smallest bird type with the maximum frequency.
     return minType;
 }
