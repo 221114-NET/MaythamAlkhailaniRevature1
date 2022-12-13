@@ -1,0 +1,44 @@
+//Create dictionary to store the frequency of each bird type.
+// foreach to iterates over the dictionary.
+//  track of the smallest bird type with the highest frequency. 
+//Finally, returns the smallest bird type with the highest frequency.
+
+
+
+    // Store the frequency of birds in the dictionary.
+
+    Dictionary<int, int> frequencies = new Dictionary<int, int>();
+
+    // Iterate over the array and count the frequency of each bird type
+
+
+    foreach (int type in arr)
+    {
+        if (!frequencies.ContainsKey(type))
+        {
+            frequencies[type] = 1;
+        }
+        else
+        {
+            frequencies[type]++;
+        }
+    }
+
+    // Find the smallest bird type with the maximum frequency
+
+
+    int minType = int.MaxValue;
+    int maxFrequency = 0;
+    foreach (int type in frequencies.Keys)
+    {
+        if (frequencies[type] > maxFrequency)
+        {
+            maxFrequency = frequencies[type];
+            minType = type;
+        }
+    }
+
+    // Return the smallest bird type with the maximum frequency
+    
+    return minType;
+
