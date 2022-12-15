@@ -1,0 +1,23 @@
+//The function first sets the date of the Day of the Programmer to be December 12 (date = 12). 
+//If the year is after 1918, the function checks whether the year is a leap year in the Gregorian calendar.
+//If the year is a leap year, the date is not changed, so it remains December 12. Otherwise, the date is incremented by one to December 13.
+//If the year is before 1918, the function checks whether the year is a leap year in the Julian calendar.
+//If the year is a leap year, the date is not changed, so it remains December 12. Otherwise, the date is incremented by one to December 13.
+//Finally, the function checks whether the year is 1918. If it is, the date is changed to December 26, which is the Day of the Programmer in 1918 because of the switch from the Julian to the Gregorian calendar that occurred in 1918.
+
+
+function dayOfProgrammer(year) {
+    // Write your code here
+    let date = 12;
+    
+    if(year > 1918) {
+        if(!(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))) date++;
+    }
+    else {
+        if(year % 4 !== 0) date++;
+        if(year == 1918) date = 26;
+    }
+    return date + '.09.' + year; 
+}
+
+
