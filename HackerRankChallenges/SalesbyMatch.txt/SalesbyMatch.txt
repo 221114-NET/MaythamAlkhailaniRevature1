@@ -1,0 +1,29 @@
+ public static int sockMerchant(int n, List<int> ar)
+    {
+
+
+        //Initializing int count =0;
+        int count=0;
+        
+        //Using Dictionary to hold key/pairs value 
+        Dictionary<int, int> pairs = new();
+        
+        //using the foreach loop to loop throw the list (ar).
+        foreach (int i in ar){
+            //if we have match, them we incremnt
+            if(pairs.ContainsKey(i)){
+                pairs[i]++;
+                //if the leftover of i % 2 is 0. Incremnt count.
+                if(pairs[i]%2==0)count++;
+            }
+            else{
+                //else we use add 1
+                pairs.Add(i, 1);
+            }
+        }
+        // return count 
+        return count;
+    
+    }
+
+
