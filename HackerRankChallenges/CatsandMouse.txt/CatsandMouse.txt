@@ -1,0 +1,19 @@
+//This function takes in the positions of the two cats (x and y) and the mouse (z). 
+//It calculates the distance from the mouse to each cat using the Math.abs() function, which returns the absolute value of a number.
+//If cat A is closer to the mouse, the function returns "Cat A". 
+//If cat B is closer, it returns "Cat B". If the distances are equal (i.e., the cats are at the same distance from the mouse), it returns "Mouse C".
+
+
+
+function catAndMouse(x, y, z) {
+    const distanceFromCatA = Math.abs(x - z);
+    const distanceFromCatB = Math.abs(y - z);
+
+    if (distanceFromCatA < distanceFromCatB) {
+        return "Cat A";
+    } else if (distanceFromCatB < distanceFromCatA) {
+        return "Cat B";
+    } else {
+        return "Mouse C";
+    }
+}
