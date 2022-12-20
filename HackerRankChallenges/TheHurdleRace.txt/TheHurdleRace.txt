@@ -1,0 +1,20 @@
+public static int hurdleRace(int k, List<int> height)
+{
+    height.Sort(); // sort the list of hurdles in ascending order
+
+    int counter = 0; // initialize a counter variable to keep track of the number of doses taken
+
+    // iterate through the list of hurdles
+    for (int i = 0; i < height.Count; i++)
+    {
+        // if the character's maximum jump height is less than the height of the hurdle,
+        // increment the maximum jump height by 1 and increment the counter by 1
+        if (k < height[i])
+        {
+            k++;
+            counter++;
+        }
+    }
+
+    return counter; // return the number of doses taken
+}
